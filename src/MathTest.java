@@ -140,7 +140,9 @@ public class MathTest {
     @ParameterizedTest
     @ValueSource(doubles = {1, 5.0, 3.7, -1, -4.0, -4.9})
     public void testZeroBase(double exponent) {
-        0x = 0
+        Assertions.assertEquals(0,
+                pow(0,exponent),
+                "0 to the power of the exponent is equal to zero");
     }
 
 
