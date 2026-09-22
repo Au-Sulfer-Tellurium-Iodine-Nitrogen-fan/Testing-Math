@@ -42,7 +42,8 @@ public class MathTest {
     })
     public void testReciprocal(double base, double exponent) {
         Assertions.assertEquals(1 / pow(base, exponent),
-                pow(base, exponent), "base to the power of -a is equal to 1/base to the power of a");
+                pow(base,(exponent*-1)
+                ), "base to the power of -a is equal to 1/base to the power of a";
     }
         // need to make exponent negative
 
