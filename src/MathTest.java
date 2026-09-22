@@ -121,14 +121,19 @@ public class MathTest {
     @ParameterizedTest
     @ValueSource(doubles = {1, 5.0, 3.7, -1, -4.0, -4.9})
     public void testZeroPower(double base) {
-        x0 = 1
+        Assertions.assertEquals(1,
+                pow(base,0),
+                "base to the power of 0 is equal to 1");
+
     }
 
 
     @ParameterizedTest
     @ValueSource(doubles = {1, 5.0, 3.7, -1, -4.0, -4.9})
     public void testOnePower(double base) {
-        x1 = x
+        Assertions.assertEquals(base,
+                pow(base,1),
+                "Base to the power of 1 is equal to base");
     }
 
 
