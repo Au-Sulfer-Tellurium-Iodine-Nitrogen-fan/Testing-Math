@@ -42,11 +42,10 @@ public class MathTest {
     })
     public void testReciprocal(double base, double exponent) {
         Assertions.assertEquals(1 / pow(base, exponent),
-                pow(base,(exponent*-1)
+                pow(base, (exponent * -1)
                 ), "base to the power of -a is equal to 1/base to the power of a");
     }
-        // need to make exponent negative
-
+    // need to make exponent negative
 
 
     @ParameterizedTest
@@ -65,8 +64,8 @@ public class MathTest {
             "-7.4, -8.3, -9.2"
     })
     public void testMultiplying(double base, double a, double b) {
-        Assertions.assertEquals(pow(base,a*b),
-        pow(base,a) * pow(base,b),
+        Assertions.assertEquals(pow(base, a + b),
+                pow(base, a) * pow(base, b), 0.00000001,
                 "base to the power of a times base to te power of b should equal 8");
     }
 
@@ -87,8 +86,8 @@ public class MathTest {
             "-7.4, -8.3, -9.2"
     })
     public void testDividing(double base, double a, double b) {
-        Assertions.assertEquals(pow(base,a-b),
-                pow(base,a) / pow(base,b),
+        Assertions.assertEquals(pow(base, a - b),
+                pow(base, a) / pow(base, b),
                 "base to the power of a divided by base to the power of b is equal to base to the power of a-b");
     }
 
@@ -109,11 +108,10 @@ public class MathTest {
             "-7.4, -8.3, -9.2"
     })
     public void testNestedPowers(double base, double a, double b) {
-        double hi = pow(base,a);
-        Assertions.assertEquals(pow(base, a*b),
-                pow(hi,b),
+        double hi = pow(base, a);
+        Assertions.assertEquals(pow(base, a * b),
+                pow(hi, b),
                 "base to the power of a to the power of b is equal to x to the power of a*b");
-
 
 
     }
@@ -123,7 +121,7 @@ public class MathTest {
     @ValueSource(doubles = {1, 5.0, 3.7, -1, -4.0, -4.9})
     public void testZeroPower(double base) {
         Assertions.assertEquals(1,
-                pow(base,0),
+                pow(base, 0),
                 "base to the power of 0 is equal to 1");
 
     }
@@ -133,7 +131,7 @@ public class MathTest {
     @ValueSource(doubles = {1, 5.0, 3.7, -1, -4.0, -4.9})
     public void testOnePower(double base) {
         Assertions.assertEquals(base,
-                pow(base,1),
+                pow(base, 1),
                 "Base to the power of 1 is equal to base");
     }
 
@@ -141,10 +139,13 @@ public class MathTest {
     @ParameterizedTest
     @ValueSource(doubles = {1, 5.0, 3.7, -1, -4.0, -4.9})
     public void testZeroBase(double exponent) {
-        Assertions.assertEquals(0,
-                pow(0,exponent),
-                "0 to the power of the exponent is equal to zero");
+        if (exponent < 0) {
+            Assertions.assertEquals(1.0 / 0, pow(0, exponent),
+                    "0 raised to the power by a negative exponent and becomes infinity");
+        } else {
+            Assertions.assertEquals(0,
+                    pow(0, exponent),
+                    "0 to the power of the exponent is equal to zero");
         }
     }
-
-
+}
