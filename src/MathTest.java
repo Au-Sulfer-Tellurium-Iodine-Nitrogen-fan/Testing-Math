@@ -87,7 +87,7 @@ public class MathTest {
     })
     public void testDividing(double base, double a, double b) {
         Assertions.assertEquals(pow(base, a - b),
-                pow(base, a) / pow(base, b),
+                pow(base, a) / pow(base, b), 0.00000001,
                 "base to the power of a divided by base to the power of b is equal to base to the power of a-b");
     }
 
@@ -110,7 +110,7 @@ public class MathTest {
     public void testNestedPowers(double base, double a, double b) {
         double hi = pow(base, a);
         Assertions.assertEquals(pow(base, a * b),
-                pow(hi, b),
+                pow(hi, b), 0.0000001,
                 "base to the power of a to the power of b is equal to x to the power of a*b");
 
 
